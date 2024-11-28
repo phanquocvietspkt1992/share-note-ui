@@ -1,6 +1,11 @@
 import { bootstrapApplication } from '@angular/platform-browser';
-import { appConfig } from './app/app.config';
-import { AppComponent } from './app/app.component';
+import { provideRouter, Route } from '@angular/router';
+import { SearchComponent } from './app/search/search.component';
 
-bootstrapApplication(AppComponent, appConfig)
-  .catch((err) => console.error(err));
+const routes: Route[] = [
+  { path: '', component: SearchComponent }, // Root path shows SearchComponent
+];
+
+bootstrapApplication(SearchComponent, {
+  providers: [provideRouter(routes)],
+}).catch((err) => console.error(err));

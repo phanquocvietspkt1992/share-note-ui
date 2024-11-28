@@ -1,0 +1,23 @@
+<div class="search-container">
+    <h1>Search</h1>
+    <form (submit)="onSearch(); $event.preventDefault()">
+      <input
+        type="text"
+        [(ngModel)]="searchQuery"
+        placeholder="Search..."
+        class="search-input"
+      />
+      <button type="submit" class="search-button">Search</button>
+    </form>
+  
+    <div *ngIf="isLoading" class="loading">Loading...</div>
+  
+    <div *ngIf="results.length > 0" class="results">
+      <div *ngFor="let result of results" class="result-item">
+        <h2 class="result-key">{{ result.key }}</h2>
+        <a href="{{ result.url }}" target="_blank" class="result-url">{{ result.url }}</a>
+        <p class="result-description">{{ result.description }}</p>
+      </div>
+    </div>
+  </div>
+  
