@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterModule } from '@angular/router'; // Import RouterModule
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  standalone: true,
+  template: `
+    <h1>Welcome to the Search App</h1>
+    <router-outlet></router-outlet> <!-- Enables routing here -->
+  `,
+  imports: [RouterModule], // Import RouterModule
 })
-export class AppComponent {
-  title = 'share-note-ui';
-}
+export class AppComponent {}
