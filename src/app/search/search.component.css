@@ -1,50 +1,47 @@
 .search-container {
-    max-width: 600px;
-    margin: 0 auto;
-    text-align: center;
-  }
-  
-  .search-input {
-    width: 80%;
-    padding: 10px;
-    font-size: 16px;
-    margin-right: 10px;
-  }
-  
-  .search-button {
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-  }
-  
-  .loading {
-    margin-top: 20px;
-    font-size: 18px;
-  }
-  
-  .results {
-    margin-top: 20px;
-    text-align: left;
-  }
-  
-  .result-item {
-    margin-bottom: 20px;
-  }
-  
-  .result-key {
-    font-size: 18px;
-    color: #1a73e8;
-  }
-  
-  .result-url {
-    display: block;
-    color: green;
-    margin-top: 5px;
-  }
-  
-  .result-description {
-    margin-top: 5px;
-    font-size: 14px;
-    color: #555;
-  }
-  
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100px;
+}
+
+.search-input {
+  width: 500px;
+  padding: 12px;
+  font-size: 18px;
+  border-radius: 24px;
+  border: 1px solid #dcdcdc;
+  margin-bottom: 20px;
+}
+
+.results {
+  width: 100%;
+  max-width: 800px;
+}
+
+.result-card {
+  padding: 16px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.result-card h3 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.result-card a {
+  color: #1a0dab;
+  text-decoration: none;
+}
+
+.result-card a:hover {
+  text-decoration: underline;
+}
+
+.result-card p {
+  color: #70757a;
+  font-size: 14px;
+}
