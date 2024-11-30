@@ -28,6 +28,7 @@ export class SearchComponent {
           this.results = data;
         },
         (error) => {
+          this.results = [];
           console.error('Error fetching search results:', error);
         }
       );
