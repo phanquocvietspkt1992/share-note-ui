@@ -1,5 +1,5 @@
 <div class="container">
-    <h1>Add New Note</h1>
+    <h2>Add New Note</h2>
     <form (ngSubmit)="onSubmit()" #noteForm="ngForm">
         <div class="form-group">
             <label for="key">Key</label>
@@ -13,7 +13,7 @@
 
         <div class="form-group">
             <label for="description">Description</label>
-            <textarea id="description" name="description" [(ngModel)]="note.description" class="form-control"
+            <textarea id="description" name="description" [(ngModel)]="note.description" class="form-control" rows="5"
                 required></textarea>
         </div>
 

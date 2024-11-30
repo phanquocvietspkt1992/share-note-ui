@@ -3,13 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
-
-interface SearchResult {
-  uuid: string;
-  key: string;
-  url: string;
-  description: string;
-}
+import { Note } from '../app/note';
 
 @Injectable({
   providedIn: 'root',
@@ -20,12 +14,12 @@ export class ApiService {
   constructor(private http: HttpClient) { }
   // Method to call the search API with the provided key
   // Method to call the search API with the provided key
-  searchNotes(query: string): Observable<SearchResult[]> {
+  searchNotes(query: string): Observable<Note[]> {
     const headers = new HttpHeaders({
       accept: 'application/json',  // Ensure that the server knows we're expecting JSON
     });
 
-    return this.http.get<SearchResult[]>(`${this.apiUrl}?key=${query}`, { headers })
+    return this.http.get<Note[]>(`${this.apiUrl}?key=${query}`, { headers })
       .pipe(
         catchError((error) => {
           console.error('Error making API call:', error);
@@ -44,7 +38,7 @@ export class ApiService {
       'Accept': 'text/plain',
       'Content-Type': 'application/json',
     });
-
+    debugger;
     // Return the HTTP POST request with error handling
     return this.http
       .post<any>("http://localhost:5272/api/Note", note, { headers })

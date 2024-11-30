@@ -55,3 +55,10 @@ form button:hover {
         font-size: 14px;
     }
 }
+
+textarea {
+    width: 100%;
+    /* Full width */
+    resize: vertical;
+    /* Allow resizing vertically only */
+}

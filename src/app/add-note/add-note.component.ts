@@ -5,6 +5,8 @@ import { CommonModule } from '@angular/common';
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
+import { Note } from '../note';
+
 
 
 @Injectable({
@@ -19,14 +21,23 @@ import { Injectable } from '@angular/core';
   imports: [FormsModule, CommonModule],  // Import necessary modules for form handling and HTTP requests
 })
 export class AddNoteComponent {
-  // The note object to store user input
-  note = { key: '', url: '', description: '' };
-  message: string = '';
 
   constructor(private apiService: ApiService) { }
 
+  // Declare the note variable
+  note: Note = {
+    id: '',         // Default value for id
+    uuid: '',       // Default value for uuid
+    key: '',        // Default value for key
+    description: '',// Default value for description
+    url: '',         // Default value for url
+  };
+
+  message: string = '';
+
   // Method to handle form submission
   onSubmit() {
+    debugger;
     // Call the ApiService to add the note
     this.apiService.addNote(this.note).subscribe(
       response => {
@@ -45,6 +56,12 @@ export class AddNoteComponent {
 
   // Optionally reset the form after successful submission
   resetForm() {
-    this.note = { key: '', url: '', description: '' };
+    this.note = {
+      id: '',              // Reset to a default ID (or null if not required)
+      uuid: '',              // Reset to a default ID (or null if not required)
+      key: '',          // Reset the title to an empty string
+      description: '',        // Reset content to an empty string
+      url: '' // Reset to current date or null if not required
+    };
   }
 }
