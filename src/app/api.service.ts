@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { catchError } from 'rxjs/operators';
-import { throwError } from 'rxjs'
+import { throwError } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
 
 interface SearchResult {
-  id: number;
+  uuid: string;
   key: string;
   url: string;
   description: string;
@@ -36,6 +36,8 @@ export class ApiService {
         })
       );
   }
+
+
   // Method to send POST request to add a new note
   addNote(note: any): Observable<any> {
     const headers = new HttpHeaders({
@@ -43,7 +45,20 @@ export class ApiService {
       'Content-Type': 'application/json',
     });
 
-    return this.http.post<any>(this.apiUrl, note, { headers });
+    // Return the HTTP POST request with error handling
+    return this.http
+      .post<any>("http://localhost:5272/api/Note", note, { headers })
+      .pipe(
+        tap(response => {
+          // Handle successful response (e.g., log it)
+          console.log('Note added successfully:', response);
+        }),
+        catchError((error) => {
+          // Handle error (e.g., log it or show a user-friendly message)
+          console.error('Error occurred while adding note:', error);
+          return throwError(() => new Error('An error occurred while adding the note.'));
+        })
+      );
   }
 
 }

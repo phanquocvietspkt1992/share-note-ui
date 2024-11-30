@@ -1,9 +1,15 @@
 import { Component, inject } from '@angular/core';
 import { ApiService } from '../api.service';  // Import ApiService to handle HTTP requests
 import { FormsModule } from '@angular/forms';  // Import FormsModule for ngModel
-
 import { CommonModule } from '@angular/common';
+import { Observable, throwError } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
+import { Injectable } from '@angular/core';
 
+
+@Injectable({
+  providedIn: 'root',
+})
 
 @Component({
   selector: 'app-add-note',

@@ -7,8 +7,8 @@ import { AddNoteComponent } from './add-note/add-note.component';  // Import the
   selector: 'app-root',
   standalone: true,
   template: `
-    <app-search></app-search> <!-- Enables routing here -->
+    <app-add-note></app-add-note> <!-- Enables routing here -->
   `,
-  imports: [RouterModule, SearchComponent], // Import RouterModule
+  imports: [RouterModule, SearchComponent, AddNoteComponent], // Import RouterModule
 })
 export class AppComponent { }
